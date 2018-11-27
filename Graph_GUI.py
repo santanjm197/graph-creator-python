@@ -616,9 +616,6 @@ class Graph_GUI(Frame):
         # Update the graph info text
         self.__update_graph_info()
 
-        print(self.graph)
-        print(self.ovals)
-
     def __prompt_vertex_value(self):
         """"Method which creates a dialog box for the user to enter the value of a new Vertex,
             evaluates whether their entry was legal and then returns it
@@ -762,8 +759,6 @@ class Graph_GUI(Frame):
         overlap = self.graph_canvas.find_overlapping(event.x-3, event.y-3,
                                                      event.x+3, event.y+3)
 
-        print(str(overlap))
-
         # The selected vertex
         sel_vertex_id = None
 
@@ -776,8 +771,6 @@ class Graph_GUI(Frame):
         if not sel_vertex_id:
             return
 
-        print(sel_vertex_id)
-
         # Make the selected vertex stay blue
         self.graph_canvas.itemconfigure(sel_vertex_id, fill='blue')
 
@@ -789,7 +782,6 @@ class Graph_GUI(Frame):
 
         # Add this vertex to the list of currently selected vertices
         self.sel_vertex_ids.append(sel_vertex_id)
-        print(self.sel_vertex_ids)
 
         # If we now have selected 2 vertices, we may draw an edge between them
         if len(self.sel_vertex_ids) == 2:
@@ -867,8 +859,6 @@ class Graph_GUI(Frame):
 
         # Update the graph info text
         self.__update_graph_info()
-
-        print(self.lines)
 
     def __check_for_overlap(self, new_edge):
         """Returns a list of the vertices which the edge will intersect, if the only
@@ -1129,7 +1119,6 @@ class Graph_GUI(Frame):
         source, dest = self.graph.find_vertex(v1_id), self.graph.find_vertex(v2_id)
 
         path = sp.dijkstra(self.graph, source, dest)
-        print(path)
 
         # Unbind the hover vertex command so the user can see the shortest path
         self.graph_canvas.unbind('<Motion>', self.hv_funcid)
